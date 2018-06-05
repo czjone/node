@@ -60,7 +60,7 @@ endif()
 
 #################################### for compiles files ########################################
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/boost/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/libs/boost
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 if(APPLE)
@@ -68,7 +68,7 @@ if(APPLE)
 endif()
 
 link_directories(
- 	${CMAKE_CURRENT_SOURCE_DIR}/libs/boost/bin/${targetPlatform}/lib
+ 	${CMAKE_CURRENT_SOURCE_DIR}/libs/boost/${targetPlatform}/lib
 )
 
 link_libraries(
