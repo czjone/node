@@ -4,13 +4,14 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/node",
-            "args": ["192.168.14.137",
-            "9090","/Users/solyess/Documents/work/Github/boost/boost_1_66_0"],
+            // "args": ["127.0.0.1","9090","/Users/solyess/Documents/work/Github/boost/boost_1_66_0"],
+            "args": ["127.0.0.1","9090","/Users/solyess/Documents/work/CellGame/unity/client/lua/cn"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

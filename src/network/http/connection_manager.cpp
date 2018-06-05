@@ -10,8 +10,10 @@
 
 #include "connection_manager.hpp"
 
-namespace http {
-namespace server {
+namespace http
+{
+namespace server
+{
 
 connection_manager::connection_manager()
 {
@@ -31,7 +33,7 @@ void connection_manager::stop(connection_ptr c)
 
 void connection_manager::stop_all()
 {
-  for (auto c: connections_)
+  for (auto c : connections_)
     c->stop();
   connections_.clear();
 }

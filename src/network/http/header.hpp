@@ -13,8 +13,10 @@
 
 #include <string>
 
-namespace http {
-namespace server {
+namespace http
+{
+namespace server
+{
 
 struct header
 {

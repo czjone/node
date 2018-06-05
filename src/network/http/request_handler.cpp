@@ -51,6 +51,8 @@ void request_handler::handle_request(const request& req, reply& rep)
     request_path += "index.html";
   }
 
+  /**** boost sample
+   
   // Determine the file extension.
   std::size_t last_slash_pos = request_path.find_last_of("/");
   std::size_t last_dot_pos = request_path.find_last_of(".");
@@ -65,6 +67,7 @@ void request_handler::handle_request(const request& req, reply& rep)
   #if DEBUG
    std::cout << full_path << std::endl;
   #endif
+
   std::ifstream is(full_path.c_str(), std::ios::in | std::ios::binary);
   if (!is)
   {
@@ -77,11 +80,57 @@ void request_handler::handle_request(const request& req, reply& rep)
   char buf[512];
   while (is.read(buf, sizeof(buf)).gcount() > 0)
     rep.content.append(buf, is.gcount());
-  rep.headers.resize(2);
+  rep.headers.resize(2);                                                                                               
   rep.headers[0].name = "Content-Length";
   rep.headers[0].value = std::to_string(rep.content.size());
   rep.headers[1].name = "Content-Type";
   rep.headers[1].value = mime_types::extension_to_type(extension);
+  **/
+
+  //[[ add by solyess
+
+std::size_t first_get_pos = request_path.find_first_of("?");
+
+if(first_get_pos != std::string::npos)
+  request_path.erase(request_path.begin() + first_get_pos, request_path.end());
+
+// Determine the file extension.
+  std::size_t last_slash_pos = request_path.find_last_of("/");
+  std::size_t last_dot_pos = request_path.find_last_of(".");
+  
+  
+  std::string extension;
+  if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos)
+  {
+    extension = request_path.substr(last_dot_pos + 1);
+  }
+
+  // Open the file to send back.
+  std::string full_path = doc_root_ + request_path;
+  #if DEBUG
+   std::cout << full_path << std::endl;
+  #endif
+
+  std::ifstream is(full_path.c_str(), std::ios::in | std::ios::binary);
+  if (!is)
+  {
+    rep = reply::stock_reply(reply::not_found);
+    return;
+  }
+
+  // Fill out the reply to be sent to the client.
+  rep.status = reply::ok;
+  char buf[512];
+  while (is.read(buf, sizeof(buf)).gcount() > 0)
+    rep.content.append(buf, is.gcount());
+  rep.headers.resize(2);                                                                                               
+  rep.headers[0].name = "Content-Length";
+  rep.headers[0].value = std::to_string(rep.content.size());
+  rep.headers[1].name = "Content-Type";
+  rep.headers[1].value = mime_types::extension_to_type(extension);
+
+  //]] end add by solyess
+
 }
 
 bool request_handler::url_decode(const std::string& in, std::string& out)

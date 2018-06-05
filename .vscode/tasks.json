@@ -13,7 +13,6 @@
             },
             "problemMatcher": []
         },
-
         {
             "label": "清理node",
             "type": "shell",
@@ -23,6 +22,6 @@
                 "isDefault": true
             },
             "problemMatcher": []
-        },
+        }
     ]
 }

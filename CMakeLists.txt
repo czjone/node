@@ -90,5 +90,9 @@ link_libraries(
 #     sclient.cc
 # )
 AUX_SOURCE_DIRECTORY(src SRC_LIST)
-AUX_SOURCE_DIRECTORY(src/http SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/network/http SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/network/tcp SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/network/udp SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/network/protocal SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/test SRC_LIST)
 ADD_EXECUTABLE(node ${SRC_LIST})
