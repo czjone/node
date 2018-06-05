@@ -10,7 +10,8 @@
             },
             "includePath": [
                 "${workspaceFolder}",
-                "${workspaceFolder}/libs/boost/include"
+                "${workspaceFolder}/libs/boost/include",
+                "${workspaceFolder}/src"
             ],
             "defines": [],
             "macFrameworkPath": [

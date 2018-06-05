@@ -61,6 +61,7 @@ endif()
 #################################### for compiles files ########################################
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/libs/boost/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 if(APPLE)
     SET(targetPlatform "mac")
@@ -90,6 +91,10 @@ link_libraries(
 #     sclient.cc
 # )
 AUX_SOURCE_DIRECTORY(src SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/base SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/commands SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/encryption SRC_LIST)
+AUX_SOURCE_DIRECTORY(src/file SRC_LIST)
 AUX_SOURCE_DIRECTORY(src/network/http SRC_LIST)
 AUX_SOURCE_DIRECTORY(src/network/tcp SRC_LIST)
 AUX_SOURCE_DIRECTORY(src/network/udp SRC_LIST)
